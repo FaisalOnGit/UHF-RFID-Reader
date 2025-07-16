@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RFID_LINEN_DESKTOP", "RFID_LINEN_DESKTOP\RFID_LINEN_DESKTOP.csproj", "{621430F8-EA38-405B-8C13-D99C3A462607}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{621430F8-EA38-405B-8C13-D99C3A462607}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{621430F8-EA38-405B-8C13-D99C3A462607}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{621430F8-EA38-405B-8C13-D99C3A462607}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{621430F8-EA38-405B-8C13-D99C3A462607}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
