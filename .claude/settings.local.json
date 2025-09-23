@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:45.64.1.117)"
+      "WebFetch(domain:45.64.1.117)",
+      "Bash(curl:*)",
+      "Bash(dotnet build:*)",
+      "Bash(msbuild:*)"
     ],
     "deny": [],
     "ask": []

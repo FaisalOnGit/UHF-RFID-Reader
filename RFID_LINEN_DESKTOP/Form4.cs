@@ -232,11 +232,32 @@ namespace RFID_LINEN_DESKTOP
                     {
                         // Display only name and BIB number from API response
                         var bibData = apiResponse.data;
+
+                        // Debug: show what we received
+                        System.Diagnostics.Debug.WriteLine($"API Response: name={bibData.name}, bib_number={bibData.biB_NUMBER}");
+                        MessageBox.Show($"API Response: name={bibData.name}, biB_NAME={bibData.biB_NAME}, biB_NUMBER={bibData.biB_NUMBER}");
+
+                        // Temporarily make controls editable
+                        bool wasNameReadOnly = txtName.ReadOnly;
+                        bool wasBibReadOnly = txtBibNumber.ReadOnly;
+
+                        txtName.ReadOnly = false;
+                        txtBibNumber.ReadOnly = false;
+
+                        // Set values directly
                         txtName.Text = bibData.name ?? "Not available";
                         txtBibNumber.Text = bibData.biB_NUMBER ?? "Not available";
 
+                        // Restore read-only state
+                        txtName.ReadOnly = wasNameReadOnly;
+                        txtBibNumber.ReadOnly = wasBibReadOnly;
+
                         lblStatus.Text = "BIB ditemukan!";
                         lblStatus.ForeColor = System.Drawing.Color.Green;
+
+                        // Force UI update
+                        txtName.Invalidate();
+                        txtBibNumber.Invalidate();
                     }
                     else
                     {
@@ -352,6 +373,7 @@ namespace RFID_LINEN_DESKTOP
         public string name { get; set; }
         public string biB_NAME { get; set; }
         public string biB_NUMBER { get; set; }
+        public string bib_NUMBER { get; set; }
         public string epc { get; set; }
     }
 }
