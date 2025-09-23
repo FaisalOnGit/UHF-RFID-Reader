@@ -230,34 +230,15 @@ namespace RFID_LINEN_DESKTOP
 
                     if (apiResponse != null && apiResponse.success && apiResponse.data != null)
                     {
-                        // Display only name and BIB number from API response
+                        // Display data in labels instead of showing modal
                         var bibData = apiResponse.data;
 
-                        // Debug: show what we received
-                        System.Diagnostics.Debug.WriteLine($"API Response: name={bibData.name}, bib_number={bibData.biB_NUMBER}");
-                        MessageBox.Show($"API Response: name={bibData.name}, biB_NAME={bibData.biB_NAME}, biB_NUMBER={bibData.biB_NUMBER}");
-
-                        // Temporarily make controls editable
-                        bool wasNameReadOnly = txtName.ReadOnly;
-                        bool wasBibReadOnly = txtBibNumber.ReadOnly;
-
-                        txtName.ReadOnly = false;
-                        txtBibNumber.ReadOnly = false;
-
-                        // Set values directly
-                        txtName.Text = bibData.name ?? "Not available";
-                        txtBibNumber.Text = bibData.biB_NUMBER ?? "Not available";
-
-                        // Restore read-only state
-                        txtName.ReadOnly = wasNameReadOnly;
-                        txtBibNumber.ReadOnly = wasBibReadOnly;
+                        // Update the labels with participant data
+                        lblParticipantName.Text = bibData.name ?? "Not available";
+                        lblBibNumber.Text = bibData.biB_NUMBER ?? "Not available";
 
                         lblStatus.Text = "BIB ditemukan!";
                         lblStatus.ForeColor = System.Drawing.Color.Green;
-
-                        // Force UI update
-                        txtName.Invalidate();
-                        txtBibNumber.Invalidate();
                     }
                     else
                     {
@@ -324,8 +305,8 @@ namespace RFID_LINEN_DESKTOP
 
         private void ClearBibInfo()
         {
-            txtName.Clear();
-            txtBibNumber.Clear();
+            lblParticipantName.Text = "-";
+            lblBibNumber.Text = "-";
         }
 
         protected override void OnFormClosed(FormClosedEventArgs e)
@@ -352,9 +333,9 @@ namespace RFID_LINEN_DESKTOP
             lblStatus.Text = "Siap untuk memeriksa BIB";
             lblStatus.ForeColor = System.Drawing.Color.Gray;
 
-            // Make result fields read-only
-            txtName.ReadOnly = true;
-            txtBibNumber.ReadOnly = true;
+            // Initialize participant info labels
+            lblParticipantName.Text = "-";
+            lblBibNumber.Text = "-";
         }
     }
 

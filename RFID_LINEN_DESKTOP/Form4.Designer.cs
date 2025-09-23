@@ -13,11 +13,14 @@ namespace RFID_LINEN_DESKTOP
         // Material Design Controls - Simplified UI
         private MaterialCard cardMain;
         private MaterialCard cardRfidReader;
+        private MaterialCard cardParticipantInfo;
         private MaterialLabel lblTitle;
         private MaterialTextBox txtRfid;
         private MaterialTextBox txtTid;
-        private MaterialTextBox txtName;
-        private MaterialTextBox txtBibNumber;
+        private MaterialLabel lblParticipantName;
+        private MaterialLabel lblBibNumber;
+        private MaterialLabel lblNameTitle;
+        private MaterialLabel lblBibTitle;
         private MaterialButton btnCheckRfid;
         private MaterialButton btnClear;
         private MaterialButton btnConnect;
@@ -30,6 +33,7 @@ namespace RFID_LINEN_DESKTOP
         private TableLayoutPanel mainLayout;
         private TableLayoutPanel buttonLayout;
         private TableLayoutPanel rfidButtonLayout;
+        private TableLayoutPanel participantInfoLayout;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -64,8 +68,12 @@ namespace RFID_LINEN_DESKTOP
             this.lblReaderStatus = new MaterialSkin.Controls.MaterialLabel();
             this.txtRfid = new MaterialSkin.Controls.MaterialTextBox();
             this.txtTid = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtName = new MaterialSkin.Controls.MaterialTextBox();
-            this.txtBibNumber = new MaterialSkin.Controls.MaterialTextBox();
+            this.cardParticipantInfo = new MaterialSkin.Controls.MaterialCard();
+            this.participantInfoLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.lblNameTitle = new MaterialSkin.Controls.MaterialLabel();
+            this.lblParticipantName = new MaterialSkin.Controls.MaterialLabel();
+            this.lblBibTitle = new MaterialSkin.Controls.MaterialLabel();
+            this.lblBibNumber = new MaterialSkin.Controls.MaterialLabel();
             this.buttonLayout = new System.Windows.Forms.TableLayoutPanel();
             this.btnCheckRfid = new MaterialSkin.Controls.MaterialButton();
             this.btnClear = new MaterialSkin.Controls.MaterialButton();
@@ -75,6 +83,8 @@ namespace RFID_LINEN_DESKTOP
             this.mainLayout.SuspendLayout();
             this.cardRfidReader.SuspendLayout();
             this.rfidButtonLayout.SuspendLayout();
+            this.cardParticipantInfo.SuspendLayout();
+            this.participantInfoLayout.SuspendLayout();
             this.buttonLayout.SuspendLayout();
             this.SuspendLayout();
             //
@@ -103,16 +113,14 @@ namespace RFID_LINEN_DESKTOP
             this.mainLayout.Controls.Add(this.cardRfidReader, 0, 1);
             this.mainLayout.Controls.Add(this.txtRfid, 0, 2);
             this.mainLayout.Controls.Add(this.txtTid, 0, 3);
-            this.mainLayout.Controls.Add(this.txtName, 0, 4);
-            this.mainLayout.Controls.Add(this.txtBibNumber, 0, 5);
-            this.mainLayout.Controls.Add(this.buttonLayout, 0, 6);
-            this.mainLayout.Controls.Add(this.progressBar, 0, 7);
-            this.mainLayout.Controls.Add(this.lblStatus, 0, 8);
+            this.mainLayout.Controls.Add(this.cardParticipantInfo, 0, 4);
+            this.mainLayout.Controls.Add(this.buttonLayout, 0, 5);
+            this.mainLayout.Controls.Add(this.progressBar, 0, 6);
+            this.mainLayout.Controls.Add(this.lblStatus, 0, 7);
             this.mainLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainLayout.Location = new System.Drawing.Point(40, 30);
             this.mainLayout.Name = "mainLayout";
-            this.mainLayout.RowCount = 9;
-            this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.AutoSize));
+            this.mainLayout.RowCount = 8;
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.AutoSize));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.AutoSize));
             this.mainLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.AutoSize));
@@ -309,51 +317,99 @@ namespace RFID_LINEN_DESKTOP
             this.txtTid.Text = "";
             this.txtTid.TrailingIcon = null;
             //
-            // txtName
+            // cardParticipantInfo
             //
-            this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.cardParticipantInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtName.AnimateReadOnly = false;
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtName.Depth = 0;
-            this.txtName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtName.Hint = "Nama Peserta";
-            this.txtName.LeadingIcon = null;
-            this.txtName.Location = new System.Drawing.Point(4, 394);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 20);
-            this.txtName.MaxLength = 100;
-            this.txtName.MinimumSize = new System.Drawing.Size(0, 50);
-            this.txtName.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtName.Multiline = false;
-            this.txtName.Name = "txtName";
-            this.txtName.ReadOnly = true;
-            this.txtName.Size = new System.Drawing.Size(602, 50);
-            this.txtName.TabIndex = 4;
-            this.txtName.Text = "";
-            this.txtName.TrailingIcon = null;
+            this.cardParticipantInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.cardParticipantInfo.Controls.Add(this.participantInfoLayout);
+            this.cardParticipantInfo.Depth = 0;
+            this.cardParticipantInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cardParticipantInfo.Location = new System.Drawing.Point(4, 394);
+            this.cardParticipantInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 20);
+            this.cardParticipantInfo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cardParticipantInfo.Name = "cardParticipantInfo";
+            this.cardParticipantInfo.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.cardParticipantInfo.Size = new System.Drawing.Size(602, 120);
+            this.cardParticipantInfo.TabIndex = 4;
             //
-            // txtBibNumber
+            // participantInfoLayout
             //
-            this.txtBibNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBibNumber.AnimateReadOnly = false;
-            this.txtBibNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBibNumber.Depth = 0;
-            this.txtBibNumber.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtBibNumber.Hint = "BIB Number";
-            this.txtBibNumber.LeadingIcon = null;
-            this.txtBibNumber.Location = new System.Drawing.Point(4, 469);
-            this.txtBibNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 20);
-            this.txtBibNumber.MaxLength = 20;
-            this.txtBibNumber.MinimumSize = new System.Drawing.Size(0, 50);
-            this.txtBibNumber.MouseState = MaterialSkin.MouseState.OUT;
-            this.txtBibNumber.Multiline = false;
-            this.txtBibNumber.Name = "txtBibNumber";
-            this.txtBibNumber.ReadOnly = true;
-            this.txtBibNumber.Size = new System.Drawing.Size(602, 50);
-            this.txtBibNumber.TabIndex = 5;
-            this.txtBibNumber.Text = "";
-            this.txtBibNumber.TrailingIcon = null;
+            this.participantInfoLayout.ColumnCount = 2;
+            this.participantInfoLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.AutoSize));
+            this.participantInfoLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.participantInfoLayout.Controls.Add(this.lblNameTitle, 0, 0);
+            this.participantInfoLayout.Controls.Add(this.lblParticipantName, 1, 0);
+            this.participantInfoLayout.Controls.Add(this.lblBibTitle, 0, 1);
+            this.participantInfoLayout.Controls.Add(this.lblBibNumber, 1, 1);
+            this.participantInfoLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.participantInfoLayout.Location = new System.Drawing.Point(20, 20);
+            this.participantInfoLayout.Name = "participantInfoLayout";
+            this.participantInfoLayout.RowCount = 2;
+            this.participantInfoLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.participantInfoLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.participantInfoLayout.Size = new System.Drawing.Size(562, 80);
+            this.participantInfoLayout.TabIndex = 0;
+            //
+            // lblNameTitle
+            //
+            this.lblNameTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblNameTitle.AutoSize = true;
+            this.lblNameTitle.Depth = 0;
+            this.lblNameTitle.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblNameTitle.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            this.lblNameTitle.Location = new System.Drawing.Point(4, 10);
+            this.lblNameTitle.Margin = new System.Windows.Forms.Padding(4, 0, 20, 0);
+            this.lblNameTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblNameTitle.Name = "lblNameTitle";
+            this.lblNameTitle.Size = new System.Drawing.Size(105, 17);
+            this.lblNameTitle.TabIndex = 0;
+            this.lblNameTitle.Text = "Nama Peserta:";
+            //
+            // lblParticipantName
+            //
+            this.lblParticipantName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblParticipantName.AutoSize = true;
+            this.lblParticipantName.Depth = 0;
+            this.lblParticipantName.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblParticipantName.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            this.lblParticipantName.Location = new System.Drawing.Point(133, 9);
+            this.lblParticipantName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblParticipantName.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblParticipantName.Name = "lblParticipantName";
+            this.lblParticipantName.Size = new System.Drawing.Size(12, 19);
+            this.lblParticipantName.TabIndex = 1;
+            this.lblParticipantName.Text = "-";
+            //
+            // lblBibTitle
+            //
+            this.lblBibTitle.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblBibTitle.AutoSize = true;
+            this.lblBibTitle.Depth = 0;
+            this.lblBibTitle.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.lblBibTitle.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            this.lblBibTitle.Location = new System.Drawing.Point(4, 51);
+            this.lblBibTitle.Margin = new System.Windows.Forms.Padding(4, 0, 20, 0);
+            this.lblBibTitle.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblBibTitle.Name = "lblBibTitle";
+            this.lblBibTitle.Size = new System.Drawing.Size(88, 17);
+            this.lblBibTitle.TabIndex = 2;
+            this.lblBibTitle.Text = "BIB Number:";
+            //
+            // lblBibNumber
+            //
+            this.lblBibNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblBibNumber.AutoSize = true;
+            this.lblBibNumber.Depth = 0;
+            this.lblBibNumber.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblBibNumber.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle1;
+            this.lblBibNumber.Location = new System.Drawing.Point(133, 50);
+            this.lblBibNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBibNumber.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblBibNumber.Name = "lblBibNumber";
+            this.lblBibNumber.Size = new System.Drawing.Size(12, 19);
+            this.lblBibNumber.TabIndex = 3;
+            this.lblBibNumber.Text = "-";
             //
             // buttonLayout
             //
@@ -366,13 +422,13 @@ namespace RFID_LINEN_DESKTOP
             this.buttonLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.buttonLayout.Controls.Add(this.btnCheckRfid, 0, 0);
             this.buttonLayout.Controls.Add(this.btnClear, 1, 0);
-            this.buttonLayout.Location = new System.Drawing.Point(0, 544);
+            this.buttonLayout.Location = new System.Drawing.Point(0, 539);
             this.buttonLayout.Margin = new System.Windows.Forms.Padding(0, 5, 0, 30);
             this.buttonLayout.Name = "buttonLayout";
             this.buttonLayout.RowCount = 1;
             this.buttonLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.buttonLayout.Size = new System.Drawing.Size(610, 48);
-            this.buttonLayout.TabIndex = 6;
+            this.buttonLayout.TabIndex = 5;
             //
             // btnCheckRfid
             //
@@ -386,7 +442,7 @@ namespace RFID_LINEN_DESKTOP
             this.btnCheckRfid.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCheckRfid.Name = "btnCheckRfid";
             this.btnCheckRfid.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.btnCheckRfid.Size = new System.Drawing.Size(138, 36);
+            this.btnCheckRfid.Size = new System.Drawing.Size(109, 36);
             this.btnCheckRfid.TabIndex = 0;
             this.btnCheckRfid.Text = "CHECK BIB";
             this.btnCheckRfid.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -401,7 +457,7 @@ namespace RFID_LINEN_DESKTOP
             this.btnClear.Depth = 0;
             this.btnClear.HighEmphasis = false;
             this.btnClear.Icon = null;
-            this.btnClear.Location = new System.Drawing.Point(159, 6);
+            this.btnClear.Location = new System.Drawing.Point(127, 6);
             this.btnClear.Margin = new System.Windows.Forms.Padding(6);
             this.btnClear.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnClear.Name = "btnClear";
@@ -418,13 +474,13 @@ namespace RFID_LINEN_DESKTOP
             //
             this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar.Location = new System.Drawing.Point(4, 627);
+            this.progressBar.Location = new System.Drawing.Point(4, 622);
             this.progressBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 15);
             this.progressBar.MarqueeAnimationSpeed = 30;
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(602, 15);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar.TabIndex = 7;
+            this.progressBar.TabIndex = 6;
             this.progressBar.Visible = false;
             //
             // lblStatus
@@ -434,12 +490,12 @@ namespace RFID_LINEN_DESKTOP
             this.lblStatus.Depth = 0;
             this.lblStatus.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.lblStatus.ForeColor = System.Drawing.Color.Gray;
-            this.lblStatus.Location = new System.Drawing.Point(4, 662);
+            this.lblStatus.Location = new System.Drawing.Point(4, 657);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStatus.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(146, 19);
-            this.lblStatus.TabIndex = 8;
+            this.lblStatus.TabIndex = 7;
             this.lblStatus.Text = "Siap untuk memeriksa BIB";
             //
             // cekRfid
@@ -462,6 +518,9 @@ namespace RFID_LINEN_DESKTOP
             this.cardRfidReader.ResumeLayout(false);
             this.rfidButtonLayout.ResumeLayout(false);
             this.rfidButtonLayout.PerformLayout();
+            this.cardParticipantInfo.ResumeLayout(false);
+            this.participantInfoLayout.ResumeLayout(false);
+            this.participantInfoLayout.PerformLayout();
             this.buttonLayout.ResumeLayout(false);
             this.buttonLayout.PerformLayout();
             this.ResumeLayout(false);
